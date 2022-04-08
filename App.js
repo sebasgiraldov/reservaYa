@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
   const Stack = createStackNavigator()
 import GenreList from './screens/GenreList'
 import CreateGenreScreen from './screens/CreateGenreScreen'
+import GenreDetailScreen from './screens/GenreDetailScreen'
 
 
 function MyStack(){
@@ -19,6 +20,10 @@ function MyStack(){
       <Stack.Screen name="CreateGenreScreen" 
       component={CreateGenreScreen} 
       options={{title: 'Create a new genre'}}/>
+
+      <Stack.Screen name="GenreDetailScreen" 
+      component={GenreDetailScreen} 
+      options={{title: 'Detail Genre'}}/>
 
     </Stack.Navigator>
   )
