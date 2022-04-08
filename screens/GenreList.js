@@ -34,7 +34,7 @@ const GenreList = (props) => {
         return(
           <ListItem
           key={genre.clave} bottomDivider onPress={() => 
-          {props.navigation.navigate('',{
+          {props.navigation.navigate('Gen',{
             genreClave: genre.clave
           })
         }}>
