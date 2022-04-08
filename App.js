@@ -16,7 +16,7 @@ function MyStack(){
 
       <Stack.Screen name="Inicio" 
       component={Inicio} 
-      options={{title: 'Inicio'}}/>
+      options={{title: 'Home'}}/>
       
       <Stack.Screen name="GenreList" 
       component={GenreList} 
