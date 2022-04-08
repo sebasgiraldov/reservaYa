@@ -6,11 +6,16 @@ import { createStackNavigator } from '@react-navigation/stack';
   const Stack = createStackNavigator()
 import GenreList from './screens/GenreList'
 import CreateGenreScreen from './screens/CreateGenreScreen'
+import Inicio from './screens/InicioScreen';
 
 
 function MyStack(){
   return(
     <Stack.Navigator>
+
+      <Stack.Screen name="Inicio" 
+      component={Inicio} 
+      options={{title: 'Inicio'}}/>
       
       <Stack.Screen name="GenreList" 
       component={GenreList} 
