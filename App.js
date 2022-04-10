@@ -8,6 +8,7 @@ import GenreList from './screens/GenreList'
 import CreateGenreScreen from './screens/CreateGenreScreen'
 import Inicio from './screens/InicioScreen';
 import GenreDetailScreen from './screens/GenreDetailScreen'
+import FoodDetailScreen from './screens/FoodDetailScreen'
 import CreateFoodScreen from './screens/CreateFoodScreeen';
 import FoodList from './screens/FoodList';
 
@@ -35,6 +36,10 @@ function MyStack() {
       <Stack.Screen name="CreateFoodScreen"
         component={CreateFoodScreen}
         options={{ title: 'Create a new food' }} />
+
+      <Stack.Screen name="FoodDetailScreen"
+        component={FoodDetailScreen}
+        options={{ title: 'Detail Food' }} />  
 
       <Stack.Screen name="FoodList"
         component={FoodList}
