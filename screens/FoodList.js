@@ -40,7 +40,7 @@ const FoodList = (props) => {
                 })
               }}>
               <ListItem.Chevron />
-              <Avatar source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDQd-mtIqHkBg55zFD-c41alEkHV7hWs71xQ&usqp=CAU' }} rounded />
+              <Avatar source={{ uri: 'https://cdn-icons-png.flaticon.com/512/325/325610.png' }} size="small" rounded />
               <ListItem.Content>
                 <ListItem.Title>{food.name}</ListItem.Title>
                 <ListItem.Subtitle>{food.identificador}</ListItem.Subtitle>
