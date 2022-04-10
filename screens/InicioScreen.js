@@ -21,7 +21,7 @@ const Inicio = (props) => {
         </Icon.Button>
       </View>
       <View style={{padding: 5}}>
-        <Icon.Button name="fast-food" backgroundColor="#778899" onPress={() => props.navigation.navigate('CreateGenreScreen')}>
+        <Icon.Button name="fast-food" backgroundColor="#778899" onPress={() => props.navigation.navigate('FoodList')}>
           {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
           <Text >
             List of Foods
