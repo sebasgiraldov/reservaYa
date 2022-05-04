@@ -11,7 +11,9 @@ import GenreDetailScreen from './screens/GenreDetailScreen'
 import FoodDetailScreen from './screens/FoodDetailScreen'
 import CreateFoodScreen from './screens/CreateFoodScreeen';
 import FoodList from './screens/FoodList';
-
+import EventList from './screens/EventList';
+import CreateEventScreen from './screens/CreateEventScreen';
+import EventDetailScreen from './screens/EventDetailScreen';
 
 function MyStack() {
   return (
@@ -44,6 +46,18 @@ function MyStack() {
       <Stack.Screen name="FoodList"
         component={FoodList}
         options={{ title: 'Food List' }} />
+
+      <Stack.Screen name="EventList"
+        component={EventList}
+        options={{ title: 'Event List' }} />
+
+      <Stack.Screen name="CreateEventScreen"
+        component={CreateEventScreen}
+        options={{ title: 'Create a new event' }} />
+
+    <Stack.Screen name="EventDetailScreen"
+        component={EventDetailScreen}
+        options={{ title: 'Detail Event' }} /> 
 
     </Stack.Navigator>
   )
