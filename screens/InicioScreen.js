@@ -28,6 +28,14 @@ const Inicio = (props) => {
           </Text>
         </Icon.Button>
       </View>
+      <View style={{padding: 5}}>
+        <Icon.Button name="reader" backgroundColor="#60B4EC" onPress={() => props.navigation.navigate('EventList')}>
+          {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
+          <Text >
+            List of Events
+          </Text>
+        </Icon.Button>
+      </View>
     </ScrollView>
   );
 };
