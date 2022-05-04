@@ -17,7 +17,7 @@ const EventDetailScreen = (props) => {
   const [loading, setLoading] = useState(true);
 
   const getEventByClave = async (clave) => {
-    const dbRef = firebase.db.collection("eventos").doc(clave);
+    const dbRef = firebase.db.collection("evento").doc(clave);
     const doc = await dbRef.get();
     const event = doc.data();
     setEvents({
@@ -37,13 +37,13 @@ const EventDetailScreen = (props) => {
 
   
   const deleteEvent = async () => {
-    const dbRef = firebase.db.collection('eventos').doc(props.route.params.eventClave);
+    const dbRef = firebase.db.collection('evento').doc(props.route.params.eventClave);
     await dbRef.delete();
     props.navigation.navigate('EventList')
   }
 
   const updateEvent = async () => {
-    const dbRef = firebase.db.collection('eventos').doc(props.route.params.eventClave);
+    const dbRef = firebase.db.collection('evento').doc(props.route.params.eventClave);
     await dbRef.set({
       cantidad_de_entradas: event.cantidad_de_entradas,
       direccion: event.direccion,
@@ -52,7 +52,7 @@ const EventDetailScreen = (props) => {
       organizador: event.organizador,
       valor: event.valor,
     })
-    setEvent(initialState)
+    setEvents(initialState)
     props.navigation.navigate('EventList')
   }
 
@@ -82,6 +82,26 @@ const EventDetailScreen = (props) => {
         <TextInput placeholder="Address"
           value={event.direccion}
           onChangeText={(value) => handleChangeText('direccion', value)} />
+      </View>
+      <View style={styles.inputGroup}>
+        <TextInput placeholder="Gender"
+          value={event.genero}
+          onChangeText={(value) => handleChangeText('genero', value)} />
+      </View>
+      <View style={styles.inputGroup} >
+        <TextInput placeholder="Name"
+          value={event.nombre}
+          onChangeText={(value) => handleChangeText('nombre', value)} />
+      </View>
+      <View style={styles.inputGroup}>
+        <TextInput placeholder="Organizer"
+          value={event.organizador}
+          onChangeText={(value) => handleChangeText('organizador', value)} />
+      </View>
+      <View style={styles.inputGroup} >
+        <TextInput placeholder="Value"
+          value={event.valor}
+          onChangeText={(value) => handleChangeText('valor', value)} />
       </View>
       <View style={styles.inputGroup}>
         <Button color="#19AC52" title="Update event"

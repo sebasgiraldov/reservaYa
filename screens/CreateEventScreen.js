@@ -31,7 +31,7 @@ const CreateEventScreen = (props) => {
     }else if (state.valor === ''){
         alert('Please provide a value to the event')
     }else{
-      await firebase.db.collection('eventos').add({
+      await firebase.db.collection('evento').add({
         cantidad_de_entradas: state.cantidad_de_entradas,
         direccion: state.direccion,
         genero: state.genero,
