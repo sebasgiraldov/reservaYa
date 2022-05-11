@@ -38,7 +38,7 @@ const Inicio = (props) => {
         </Icon.Button>
       </View>
       <View style={{padding: 5}}>
-        <Icon.Button name="musical-notes" backgroundColor="#87cefa" onPress={() => props.navigation.navigate('CreateReservaScreen')}>
+        <Icon.Button name="musical-notes" backgroundColor="#87cefa" onPress={() => props.navigation.navigate('ApoinmentList')}>
           {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
           <Text >
             List of Apoiments

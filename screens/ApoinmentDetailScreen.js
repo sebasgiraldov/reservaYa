@@ -3,7 +3,7 @@ import { View, StyleSheet, TextInput, ScrollView, Button, Alert } from 'react-na
 import { ActivityIndicator } from 'react-native';
 import firebase from '../database/firebase'
 
-const ApoitmentDetailScreen = (props) => {
+const ApoinmentDetailScreen = (props) => {
     const initialState = {
         clave: "",
         idUsuario: "",
@@ -133,4 +133,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ApoitmentDetailScreen
+export default ApoinmentDetailScreen

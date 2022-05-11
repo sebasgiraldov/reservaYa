@@ -12,8 +12,10 @@ import FoodDetailScreen from './screens/FoodDetailScreen'
 import CreateFoodScreen from './screens/CreateFoodScreeen';
 import FoodList from './screens/FoodList';
 import EventList from './screens/EventList';
+import ApoinmentList from './screens/ApoinmentList';
 import CreateEventScreen from './screens/CreateEventScreen';
 import EventDetailScreen from './screens/EventDetailScreen';
+import ApoinmentDetailScreen from './screens/ApoinmentDetailScreen';
 import CreateReservaScreen from './screens/CreateReservaScreen';
 
 function MyStack() {
@@ -42,7 +44,7 @@ function MyStack() {
 
       <Stack.Screen name="FoodDetailScreen"
         component={FoodDetailScreen}
-        options={{ title: 'Detail Food' }} />  
+        options={{ title: 'Detail Food' }} />
 
       <Stack.Screen name="FoodList"
         component={FoodList}
@@ -52,17 +54,25 @@ function MyStack() {
         component={EventList}
         options={{ title: 'Event List' }} />
 
+      <Stack.Screen name="ApoinmentList"
+        component={ApoinmentList}
+        options={{ title: 'Apoinment List' }} />
+
       <Stack.Screen name="CreateEventScreen"
         component={CreateEventScreen}
         options={{ title: 'Create a new event' }} />
 
-    <Stack.Screen name="EventDetailScreen"
+      <Stack.Screen name="EventDetailScreen"
         component={EventDetailScreen}
-        options={{ title: 'Detail Event' }} /> 
+        options={{ title: 'Detail Event' }} />
 
-<Stack.Screen name="CreateReservaScreen"
+      <Stack.Screen name="ApoinmentDetailScreen"
+        component={ApoinmentDetailScreen}
+        options={{ title: 'Detail List' }} />
+
+      <Stack.Screen name="CreateReservaScreen"
         component={CreateReservaScreen}
-        options={{ title: 'Create Reserva' }} /> 
+        options={{ title: 'Create Reserva' }} />
 
     </Stack.Navigator>
   )
