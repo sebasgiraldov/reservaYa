@@ -26,6 +26,7 @@ const CreateGenreScreen = (props) => {
       props.navigation.navigate('GenreList');
     }
     
+    
   };
 
   return (
