@@ -14,6 +14,7 @@ import FoodList from './screens/FoodList';
 import EventList from './screens/EventList';
 import CreateEventScreen from './screens/CreateEventScreen';
 import EventDetailScreen from './screens/EventDetailScreen';
+import CreateReservaScreen from './screens/CreateReservaScreen';
 
 function MyStack() {
   return (
@@ -58,6 +59,10 @@ function MyStack() {
     <Stack.Screen name="EventDetailScreen"
         component={EventDetailScreen}
         options={{ title: 'Detail Event' }} /> 
+
+<Stack.Screen name="CreateReservaScreen"
+        component={CreateReservaScreen}
+        options={{ title: 'Create Reserva' }} /> 
 
     </Stack.Navigator>
   )

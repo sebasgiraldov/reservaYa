@@ -3,7 +3,7 @@ import { View, Button, TextInput, ScrollView, StyleSheet } from 'react-native'
 import firebase from '../database/firebase'
 import RNPickerSelect from "react-native-picker-select"
 
-const CreateEventScreen = (props) => {
+const CreateReservaScreen = (props) => {
 
   const [state, setState] = useState({
     cantidad_de_entradas: '',
@@ -37,19 +37,19 @@ const CreateEventScreen = (props) => {
     setState({ ...state, [name]: value })
   };
 
-  const saveNewEvent = async () => {
+  const saveNewReserva = async () => {
     if (state.cantidad_de_entradas === '') {
-      alert('Please provide the number of tickets to the event')
+      alert('Please provide the number of tickets to thReserva')
     } else if (state.direccion === '') {
-      alert('Please provide an address to the event')
+      alert('Please provide an address to the Apoiment')
     } else if (state.genero === '') {
-      alert('Please provide a gender to the event')
+      alert('Please provide a gender to the Apoiment')
     } else if (state.nombre === '') {
-      alert('Please provide a name to the event')
+      alert('Please provide a name to the Apoiment')
     } else if (state.organizador === '') {
-      alert('Please provide an organizer to the event')
+      alert('Please provide an organizer to the Apoiment')
     } else if (state.valor === '') {
-      alert('Please provide a value to the event')
+      alert('Please provide a value to the Apoiment')
     } else {
       await firebase.db.collection('evento').add({
         cantidad_de_entradas: state.cantidad_de_entradas,
@@ -124,4 +124,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CreateEventScreen
+export default CreateReservaScreen
