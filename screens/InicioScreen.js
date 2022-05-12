@@ -30,7 +30,7 @@ const Inicio = (props) => {
         </Icon.Button>
       </View>
       <View style={{padding: 5}}>
-        <Icon.Button name="reader" backgroundColor="#60B4EC" onPress={() => props.navigation.navigate('EventList')}>
+        <Icon.Button name="reader" backgroundColor="#DC3FFF" onPress={() => props.navigation.navigate('EventList')}>
           {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
           <Text >
             List of Events
@@ -38,7 +38,7 @@ const Inicio = (props) => {
         </Icon.Button>
       </View>
       <View style={{padding: 5}}>
-        <Icon.Button name="musical-notes" backgroundColor="#87cefa" onPress={() => props.navigation.navigate('ApoinmentList')}>
+        <Icon.Button name="musical-notes" backgroundColor="#FF3F6B" onPress={() => props.navigation.navigate('ApoinmentList')}>
           {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
           <Text >
             List of Apoiments
