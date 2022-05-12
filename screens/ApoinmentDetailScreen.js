@@ -26,6 +26,7 @@ const ApoinmentDetailScreen = (props) => {
             ...apoitment,
             clave: doc.clave,
         });
+        console.log(apoitment)
         setLoading(false);
     };
 
@@ -53,8 +54,6 @@ const ApoinmentDetailScreen = (props) => {
             nombreEvento: apoitment.nombreEvento,
             organizadorEvento: apoitment.organizadorEvento,
             valorReserva: apoitment.valorReserva,
-            qr: "",
-            estadoQR: "Activo",
         })
         setApoitments(initialState)
         props.navigation.navigate('ApoitmentList')
