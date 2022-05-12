@@ -6,14 +6,9 @@ import firebase from '../database/firebase'
 const ApoinmentDetailScreen = (props) => {
     const initialState = {
         clave: "",
-        idUsuario: "",
-        idEvento: "",
-        genero: "",
-        nombreEvento: "",
-        organizadorEvento: "",
-        valorReserva: "",
-        qr: "",
-        estadoQR: "",
+        nombreCliente: "",
+        evento: "",
+        cantidadBoletas: "",
     }
     const [apoitment, setApoitment] = useState(initialState);
     const [loading, setLoading] = useState(true);
@@ -48,12 +43,9 @@ const ApoinmentDetailScreen = (props) => {
     const updateApoitment = async () => {
         const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoitmentClave);
         await dbRef.set({
-            idUsuario: apoitment.idUsuario,
-            idEvento: apoitment.idEvento,
-            genero: apoitment.genero,
-            nombreEvento: apoitment.nombreEvento,
-            organizadorEvento: apoitment.organizadorEvento,
-            valorReserva: apoitment.valorReserva,
+            nombreCliente: apoitment.nombreCliente,
+            evento: apoitment.evento,
+            cantidadBoletas: apoitment.cantidadBoletas,
         })
         setApoitments(initialState)
         props.navigation.navigate('ApoitmentList')
@@ -77,34 +69,19 @@ const ApoinmentDetailScreen = (props) => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.inputGroup}>
-                <TextInput placeholder="Id Evento"
-                    value={apoitment.idEvento}
-                    onChangeText={(value) => handleChangeText('idEvento', value)} />
+                <TextInput placeholder={"Nombre del cliente"}
+                    value={apoitment.nombreCliente}
+                    onChangeText={(value) => handleChangeText('nombreCliente', value)} />
             </View>
             <View style={styles.inputGroup} >
-                <TextInput placeholder="Id Usuario"
-                    value={apoitment.idUsuario}
-                    onChangeText={(value) => handleChangeText('idUsuario', value)} />
+                <TextInput placeholder="Evento"
+                    value={apoitment.evento}
+                    onChangeText={(value) => handleChangeText('evento', value)} />
             </View>
             <View style={styles.inputGroup}>
-                <TextInput placeholder="Genero"
-                    value={apoitment.genero}
-                    onChangeText={(value) => handleChangeText('genero', value)} />
-            </View>
-            <View style={styles.inputGroup} >
-                <TextInput placeholder="Nombre del evento"
-                    value={apoitment.nombreEvento}
-                    onChangeText={(value) => handleChangeText('nombreEvento', value)} />
-            </View>
-            <View style={styles.inputGroup}>
-                <TextInput placeholder="Organizador del Evento"
-                    value={apoitment.organizadorEvento}
-                    onChangeText={(value) => handleChangeText('organizadorEvento', value)} />
-            </View>
-            <View style={styles.inputGroup} >
-                <TextInput placeholder="Valor de la reserva"
-                    value={apoitment.valorReserva}
-                    onChangeText={(value) => handleChangeText('valorReserva', value)} />
+                <TextInput placeholder="Cantidad de boletas"
+                    value={apoitment.cantidadBoletas}
+                    onChangeText={(value) => handleChangeText('cantidadBoletas', value)} />
             </View>
             <View style={styles.inputGroup}>
                 <Button color="#19AC52" title="Update apoitment"
