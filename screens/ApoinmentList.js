@@ -12,18 +12,14 @@ const ApoinmentList = (props) => {
       const apoinments = [];
 
       querySnapshot.docs.forEach((doc) => {
-        const { nombreEvento, idEvento, valorReserva, genero,  organizadorEvento, estadoQR } = doc.data();
+        const { nombreCliente, evento, cantidadBoletas  } = doc.data();
         apoinments.push({
           clave: doc.id,
-          nombreEvento,
-          idEvento,
-          valorReserva,
-          genero,
-          organizadorEvento,
-          estadoQR,
+          nombreCliente,
+          evento,
+          cantidadBoletas,
         });
       });
-
       setApoinments(apoinments)
     });
   }, []);
@@ -46,12 +42,10 @@ const ApoinmentList = (props) => {
               <ListItem.Chevron />
               <Avatar source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDQd-mtIqHkBg55zFD-c41alEkHV7hWs71xQ&usqp=CAU' }} rounded />
               <ListItem.Content>
-                <ListItem.Title>Reserva {apoinment.idEvento}</ListItem.Title>
-                <ListItem.Subtitle>Genero: {apoinment.genero}</ListItem.Subtitle>
-                <ListItem.Subtitle>Nombre: {apoinment.nombreEvento}</ListItem.Subtitle>
-                <ListItem.Subtitle>Organizador: {apoinment.organizadorEvento}</ListItem.Subtitle>
-                <ListItem.Subtitle>Valor: ${apoinment.valorReserva}</ListItem.Subtitle>
-                <ListItem.Subtitle>Estado QR: {apoinment.estadoQR}</ListItem.Subtitle>
+                <ListItem.Title>Reserva</ListItem.Title>
+                <ListItem.Subtitle>Nombre cliente: {apoinment.nombreCliente}</ListItem.Subtitle>
+                <ListItem.Subtitle>Evento: {apoinment.evento}</ListItem.Subtitle>
+                <ListItem.Subtitle>Cantidad boletas: {apoinment.cantidadBoletas}</ListItem.Subtitle>
               </ListItem.Content>
             </ListItem>
           )
