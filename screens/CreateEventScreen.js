@@ -29,20 +29,20 @@ const CreateEventScreen = (props) => {
         });
       });
       setGenres(genres);
-      
+
       const gen1 = []
 
       genres.forEach((g, i) => {
         let item = {
-          label:'',
-          value:''
+          label: '',
+          value: ''
         }
         item.label = g.name;
         item.value = g.name;
 
         gen1[i] = (item);
       });
-      setGen(...gen,gen1);
+      setGen(...gen, gen1);
 
     });
   }, []);
@@ -54,6 +54,8 @@ const CreateEventScreen = (props) => {
   const saveNewEvent = async () => {
     if (state.cantidad_de_entradas === '') {
       alert('Please provide the number of tickets to the event')
+    } else if (parseInt(state.cantidad_de_entradas, 10) < 10) {
+      alert('El cupo de entradas para su evento debe ser superior a 10 personas')
     } else if (state.direccion === '') {
       alert('Please provide an address to the event')
     } else if (state.genero === '') {
@@ -90,17 +92,17 @@ const CreateEventScreen = (props) => {
       </View>
       <View style={styles.inputGroup}>
         <RNPickerSelect
-                 onValueChange={(value) => handleChangeText('genero', value)}
-                //  items={[
-                //      { label: "Regueton", value: "Regueton" },
-                //      { label: "Vallenato", value: "Vallenato" },
-                //      { label: "Salsa", value: "Salsa" },
-                //      { label: "Rock", value: "Rock" },
-                //      { label: "Metal", value: "Metal" },
-                //      { label: "Crossover", value: "CCrossover" },
-                //  ]}
-                items = {gen}
-             />
+          onValueChange={(value) => handleChangeText('genero', value)}
+          //  items={[
+          //      { label: "Regueton", value: "Regueton" },
+          //      { label: "Vallenato", value: "Vallenato" },
+          //      { label: "Salsa", value: "Salsa" },
+          //      { label: "Rock", value: "Rock" },
+          //      { label: "Metal", value: "Metal" },
+          //      { label: "Crossover", value: "CCrossover" },
+          //  ]}
+          items={gen}
+        />
       </View>
       <View style={styles.inputGroup} >
         <TextInput placeholder="Name"
