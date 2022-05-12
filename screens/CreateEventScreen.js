@@ -14,6 +14,7 @@ const CreateEventScreen = (props) => {
     valor: ''
   })
   const [genres, setGenres] = useState([]);
+  const [gen, setGen] = useState([]);
 
   useEffect(() => {
     firebase.db.collection("genres").onSnapshot((querySnapshot) => {
@@ -27,9 +28,22 @@ const CreateEventScreen = (props) => {
           id,
         });
       });
+      setGenres(genres);
+      
+      const gen1 = []
 
-      setGenres(genres)
-      console.log(genres)
+      genres.forEach((g, i) => {
+        let item = {
+          label:'',
+          value:''
+        }
+        item.label = g.name;
+        item.value = g.name;
+
+        gen1[i] = (item);
+      });
+      setGen(...gen,gen1);
+
     });
   }, []);
 
@@ -76,15 +90,16 @@ const CreateEventScreen = (props) => {
       </View>
       <View style={styles.inputGroup}>
         <RNPickerSelect
-                 onValueChange={(value) => console.log(value)}
-                 items={[
-                     { label: "Regueton", value: "Regueton" },
-                     { label: "Vallenato", value: "Vallenato" },
-                     { label: "Salsa", value: "Salsa" },
-                     { label: "Rock", value: "Rock" },
-                     { label: "Metal", value: "Metal" },
-                     { label: "Crossover", value: "CCrossover" },
-                 ]}
+                 onValueChange={(value) => handleChangeText('genero', value)}
+                //  items={[
+                //      { label: "Regueton", value: "Regueton" },
+                //      { label: "Vallenato", value: "Vallenato" },
+                //      { label: "Salsa", value: "Salsa" },
+                //      { label: "Rock", value: "Rock" },
+                //      { label: "Metal", value: "Metal" },
+                //      { label: "Crossover", value: "CCrossover" },
+                //  ]}
+                items = {gen}
              />
       </View>
       <View style={styles.inputGroup} >
