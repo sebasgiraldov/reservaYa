@@ -6,27 +6,41 @@ import RNPickerSelect from "react-native-picker-select"
 const CreateReservaScreen = (props) => {
 
   const [state, setState] = useState({
-    nombreEvento: '',
-    organizadorEvento: '',
-    valorReserva: '',
-  })
-  const [genres, setGenres] = useState([]);
+    nombreCliente: '',
+    evento: '',
+    cantidadBoletas: '',
+  });
+
+  const [eventos, setEventos] = useState([]);
+  const [gen, setGen] = useState([]);
 
   useEffect(() => {
-    firebase.db.collection("genres").onSnapshot((querySnapshot) => {
-      const genres = [];
+    firebase.db.collection("evento").onSnapshot((querySnapshot) => {
+      const eventos = [];
 
       querySnapshot.docs.forEach((doc) => {
-        const { name, id } = doc.data();
-        genres.push({
+        const { nombre, valor } = doc.data();
+        eventos.push({
           clave: doc.id,
-          name,
-          id,
+          nombre,
+          valor,
         });
       });
 
-      setGenres(genres)
-      console.log(genres)
+      setEventos(eventos)
+      const gen1 = []
+
+      eventos.forEach((g, i) => {
+        let item = {
+          label:'',
+          value:''
+        }
+        item.label = g.nombre;
+        item.value = g.nombre;
+
+        gen1[i] = (item);
+      });
+      setGen(...gen,gen1);
     });
   }, []);
 
@@ -35,17 +49,17 @@ const CreateReservaScreen = (props) => {
   };
 
   const saveNewReserva = async () => {
-    if (state.nombreEvento === '') {
-      alert('Please provide the name of the event')
-    } else if (state.organizadorEvento === '') {
-      alert('Please provide an organizator of the event')
-    } else if (state.valorReserva === '') {
-      alert('Please provide a value of the apoitment')
+    if (state.nombreCliente === '') {
+      alert('Please provide the name of the client')
+    } else if (state.evento === '') {
+      alert('Please provide the namer of the event')
+    } else if (state.cantidadBoletas === '') {
+      alert('Please provide a value of the tickets')
     } else {
       await firebase.db.collection('reservas').add({
-        nombreEvento: state.nombreEvento,
-        organizadorEvento: state.organizadorEvento,
-        valorReserva: state.valorReserva,
+        nombreCliente: state.nombreCliente,
+        evento: state.evento,
+        cantidadBoletas: state.cantidadBoletas,
       })
       props.navigation.navigate('ApoinmentList');
     }
@@ -56,32 +70,21 @@ const CreateReservaScreen = (props) => {
     <ScrollView style={styles.container}>
       <View style={styles.inputGroup}>
         <RNPickerSelect
-          onValueChange={(value) => console.log(value)}
-          items={[
-            { label: "Regueton", value: "Regueton" },
-            { label: "Vallenato", value: "Vallenato" },
-            { label: "Salsa", value: "Salsa" },
-            { label: "Rock", value: "Rock" },
-            { label: "Metal", value: "Metal" },
-            { label: "Crossover", value: "CCrossover" },
-          ]}
+          onValueChange={(value) => handleChangeText('evento', value)}
+          items={gen}
         />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Nombre del evento"
-          onChangeText={(value) => handleChangeText('nombreEvento', value)} />
+        <TextInput placeholder="Nombre del cliente"
+          onChangeText={(value) => handleChangeText('nombreCliente', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Organizador del evento"
-          onChangeText={(value) => handleChangeText('organizadorEvento', value)} />
+        <TextInput placeholder="Cantidad de boletas:"
+          onChangeText={(value) => handleChangeText('cantidadBoletas', value)} />
       </View>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Valor de la reserva"
-          onChangeText={(value) => handleChangeText('valorReserva', value)} />
-      </View>
-      <View style={styles.inputGroup}>
-        <Button title="Save event"
-          onPress={() => saveNewEvent()}></Button>
+        <Button title="Save reserva"
+          onPress={() => saveNewReserva()}></Button>
       </View>
     </ScrollView>
   )
