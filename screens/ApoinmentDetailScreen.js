@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { View, StyleSheet, TextInput, ScrollView, Button, Alert } from 'react-native'
 import { ActivityIndicator } from 'react-native';
 import firebase from '../database/firebase'
+import QRCode from "react-qr-code";
 
 const ApoinmentDetailScreen = (props) => {
     const initialState = {
@@ -10,50 +11,50 @@ const ApoinmentDetailScreen = (props) => {
         evento: "",
         cantidadBoletas: "",
     }
-    const [apoitment, setApoitment] = useState(initialState);
+    const [apoinment, setApoinment] = useState(initialState);
     const [loading, setLoading] = useState(true);
 
-    const getApoitmentByClave = async (clave) => {
+    const getApoinmentByClave = async (clave) => {
         const dbRef = firebase.db.collection("reservas").doc(clave);
         const doc = await dbRef.get();
-        const apoitment = doc.data();
-        setApoitment({
-            ...apoitment,
+        const apoinment = doc.data();
+        setApoinment({
+            ...apoinment,
             clave: doc.clave,
         });
-        console.log(apoitment)
+        console.log(apoinment)
         setLoading(false);
     };
 
     useEffect(() => {
-        getApoitmentByClave(props.route.params.apoitmentClave);
+        getApoinmentByClave(props.route.params.apoinmentClave);
     }, []);
 
     const handleChangeText = (name, value) => {
-        setApoitment({ ...apoitment, [name]: value })
+        setApoinment({ ...apoinment, [name]: value })
     };
 
 
-    const deleteApoitment = async () => {
-        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoitmentClave);
+    const deleteApoinment = async () => {
+        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoinmentClave);
         await dbRef.delete();
-        props.navigation.navigate('ApoitmentList')
+        props.navigation.navigate('ApoinmentList')
     }
 
-    const updateApoitment = async () => {
-        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoitmentClave);
+    const updateApoinment = async () => {
+        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoinmentClave);
         await dbRef.set({
-            nombreCliente: apoitment.nombreCliente,
-            evento: apoitment.evento,
-            cantidadBoletas: apoitment.cantidadBoletas,
+            nombreCliente: apoinment.nombreCliente,
+            evento: apoinment.evento,
+            cantidadBoletas: apoinment.cantidadBoletas,
         })
-        setApoitments(initialState)
-        props.navigation.navigate('ApoitmentList')
+        setApoinments(initialState)
+        props.navigation.navigate('ApoinmentList')
     }
 
     const openConfirmationAlert = () => {
-        Alert.alert('Remove the apoitment', 'Are you sure?', [
-            { text: 'Yes', onPress: () => deleteApoitment() },
+        Alert.alert('Remove the apoinment', 'Are you sure?', [
+            { text: 'Yes', onPress: () => deleteApoinment() },
             { text: 'No', onPress: () => console.log('Canceled') },
         ])
     }
@@ -70,25 +71,26 @@ const ApoinmentDetailScreen = (props) => {
         <ScrollView style={styles.container}>
             <View style={styles.inputGroup}>
                 <TextInput placeholder={"Nombre del cliente"}
-                    value={apoitment.nombreCliente}
+                    value={apoinment.nombreCliente}
                     onChangeText={(value) => handleChangeText('nombreCliente', value)} />
             </View>
             <View style={styles.inputGroup} >
                 <TextInput placeholder="Evento"
-                    value={apoitment.evento}
+                    value={apoinment.evento}
                     onChangeText={(value) => handleChangeText('evento', value)} />
             </View>
             <View style={styles.inputGroup}>
                 <TextInput placeholder="Cantidad de boletas"
-                    value={apoitment.cantidadBoletas}
+                    value={apoinment.cantidadBoletas}
                     onChangeText={(value) => handleChangeText('cantidadBoletas', value)} />
             </View>
+            <QRCode value={apoinment.qr} size='300'/>
             <View style={styles.inputGroup}>
-                <Button color="#19AC52" title="Update apoitment"
+                <Button color="#19AC52" title="Update apoinment"
                     onPress={() => updateApoitment()}></Button>
             </View>
             <View>
-                <Button color="red" title="Delete apoitment"
+                <Button color="red" title="Delete apoinment"
                     onPress={() => openConfirmationAlert()}></Button>
             </View>
         </ScrollView>
