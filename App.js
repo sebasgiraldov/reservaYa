@@ -17,6 +17,7 @@ import CreateEventScreen from './screens/CreateEventScreen';
 import EventDetailScreen from './screens/EventDetailScreen';
 import ApoinmentDetailScreen from './screens/ApoinmentDetailScreen';
 import CreateReservaScreen from './screens/CreateReservaScreen';
+import QRScreen from './screens/QRScreen';
 
 function MyStack() {
   return (
@@ -73,6 +74,10 @@ function MyStack() {
       <Stack.Screen name="CreateReservaScreen"
         component={CreateReservaScreen}
         options={{ title: 'Create Reserva' }} />
+
+      <Stack.Screen name="QRScreen"
+        component={QRScreen}
+        options={{ title: 'Codigo QR' }} />
 
     </Stack.Navigator>
   )
