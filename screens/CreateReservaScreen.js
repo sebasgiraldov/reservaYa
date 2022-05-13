@@ -60,8 +60,9 @@ const CreateReservaScreen = (props) => {
         nombreCliente: state.nombreCliente,
         evento: state.evento,
         cantidadBoletas: state.cantidadBoletas,
+        qr: state.nombreCliente + "\n" + state.evento + "\n" + state.cantidadBoletas,
       })
-      props.navigation.navigate('ApoinmentList');
+      props.navigation.navigate('QRScreen');
     }
 
   };
