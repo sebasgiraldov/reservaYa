@@ -5,54 +5,54 @@ import firebase from '../database/firebase'
 
 const ApoinmentDetailScreen = (props) => {
     const initialState = {
-        clave: "",
-        nombreCliente: "",
-        evento: "",
-        cantidadBoletas: "",
+        clave: '',
+        nombreCliente: '',
+        evento: '',
+        cantidadBoletas: '',
     }
-    const [apoitment, setApoitment] = useState(initialState);
+    console.log(props)
+    const [apoinment, setApoinment] = useState(initialState);
     const [loading, setLoading] = useState(true);
 
     const getApoitmentByClave = async (clave) => {
         const dbRef = firebase.db.collection("reservas").doc(clave);
         const doc = await dbRef.get();
-        const apoitment = doc.data();
-        setApoitment({
-            ...apoitment,
+        const apoinment = doc.data();
+        setApoinment({
+            ...apoinment,
             clave: doc.clave,
         });
-        console.log(apoitment)
         setLoading(false);
     };
 
     useEffect(() => {
-        getApoitmentByClave(props.route.params.apoitmentClave);
+        getApoitmentByClave(props.route.params.apoinmentClave);
     }, []);
 
     const handleChangeText = (name, value) => {
-        setApoitment({ ...apoitment, [name]: value })
+        setApoinment({ ...apoinment, [name]: value })
     };
 
 
     const deleteApoitment = async () => {
-        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoitmentClave);
+        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoinmentClave);
         await dbRef.delete();
-        props.navigation.navigate('ApoitmentList')
+        props.navigation.navigate('ApoinmentList')
     }
 
     const updateApoitment = async () => {
-        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoitmentClave);
+        const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoinmentClave);
         await dbRef.set({
-            nombreCliente: apoitment.nombreCliente,
-            evento: apoitment.evento,
-            cantidadBoletas: apoitment.cantidadBoletas,
+            nombreCliente: apoinment.nombreCliente,
+            evento: apoinment.evento,
+            cantidadBoletas: apoinment.cantidadBoletas,
         })
-        setApoitments(initialState)
-        props.navigation.navigate('ApoitmentList')
+        setApoinment(initialState)
+        props.navigation.navigate('ApoinmentList')
     }
 
     const openConfirmationAlert = () => {
-        Alert.alert('Remove the apoitment', 'Are you sure?', [
+        Alert.alert('Remove the apoinment', 'Are you sure?', [
             { text: 'Yes', onPress: () => deleteApoitment() },
             { text: 'No', onPress: () => console.log('Canceled') },
         ])
@@ -69,26 +69,26 @@ const ApoinmentDetailScreen = (props) => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.inputGroup}>
-                <TextInput placeholder={"Nombre del cliente"}
-                    value={apoitment.nombreCliente}
+                <TextInput placeholder="nombreCliente"
+                    value={apoinment.nombreCliente}
                     onChangeText={(value) => handleChangeText('nombreCliente', value)} />
             </View>
             <View style={styles.inputGroup} >
                 <TextInput placeholder="Evento"
-                    value={apoitment.evento}
+                    value={apoinment.evento}
                     onChangeText={(value) => handleChangeText('evento', value)} />
             </View>
             <View style={styles.inputGroup}>
                 <TextInput placeholder="Cantidad de boletas"
-                    value={apoitment.cantidadBoletas}
+                    value={apoinment.cantidadBoletas}
                     onChangeText={(value) => handleChangeText('cantidadBoletas', value)} />
             </View>
             <View style={styles.inputGroup}>
-                <Button color="#19AC52" title="Update apoitment"
+                <Button color="#19AC52" title="Update apoinment"
                     onPress={() => updateApoitment()}></Button>
             </View>
             <View>
-                <Button color="red" title="Delete apoitment"
+                <Button color="red" title="Delete apoinment"
                     onPress={() => openConfirmationAlert()}></Button>
             </View>
         </ScrollView>

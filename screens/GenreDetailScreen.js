@@ -20,6 +20,7 @@ const GenreDetailScreen = (props) => {
       ...genre,
       clave: doc.clave,
     });
+    console.log(genre);
     setLoading(false);
   };
 
