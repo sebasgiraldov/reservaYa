@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { View, StyleSheet, TextInput, ScrollView, Button, Alert } from 'react-native'
 import { ActivityIndicator } from 'react-native';
 import firebase from '../database/firebase'
+import QRCode from "react-qr-code";
 
 const ApoinmentDetailScreen = (props) => {
     const initialState = {
@@ -9,6 +10,7 @@ const ApoinmentDetailScreen = (props) => {
         nombreCliente: '',
         evento: '',
         cantidadBoletas: '',
+        qr: '',
     }
     console.log(props)
     const [apoinment, setApoinment] = useState(initialState);
@@ -34,13 +36,13 @@ const ApoinmentDetailScreen = (props) => {
     };
 
 
-    const deleteApoitment = async () => {
+    const deleteApoinment = async () => {
         const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoinmentClave);
         await dbRef.delete();
         props.navigation.navigate('ApoinmentList')
     }
 
-    const updateApoitment = async () => {
+    const updateApoinment = async () => {
         const dbRef = firebase.db.collection('reservas').doc(props.route.params.apoinmentClave);
         await dbRef.set({
             nombreCliente: apoinment.nombreCliente,
@@ -53,7 +55,7 @@ const ApoinmentDetailScreen = (props) => {
 
     const openConfirmationAlert = () => {
         Alert.alert('Remove the apoinment', 'Are you sure?', [
-            { text: 'Yes', onPress: () => deleteApoitment() },
+            { text: 'Yes', onPress: () => deleteApoinment() },
             { text: 'No', onPress: () => console.log('Canceled') },
         ])
     }
@@ -83,9 +85,10 @@ const ApoinmentDetailScreen = (props) => {
                     value={apoinment.cantidadBoletas}
                     onChangeText={(value) => handleChangeText('cantidadBoletas', value)} />
             </View>
+            <QRCode value={apoinment.qr} size='300'/>
             <View style={styles.inputGroup}>
                 <Button color="#19AC52" title="Update apoinment"
-                    onPress={() => updateApoitment()}></Button>
+                    onPress={() => updateApoinment()}></Button>
             </View>
             <View>
                 <Button color="red" title="Delete apoinment"
