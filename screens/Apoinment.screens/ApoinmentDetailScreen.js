@@ -47,6 +47,7 @@ const ApoinmentDetailScreen = (props) => {
             nombreCliente: apoinment.nombreCliente,
             evento: apoinment.evento,
             cantidadBoletas: apoinment.cantidadBoletas,
+            qr: apoinment.qr,
         })
         setApoinment(initialState)
         props.navigation.navigate('ApoinmentList')

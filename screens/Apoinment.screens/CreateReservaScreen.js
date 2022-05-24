@@ -32,15 +32,15 @@ const CreateReservaScreen = (props) => {
 
       evento.forEach((g, i) => {
         let item = {
-          label:'',
-          value:''
+          label: '',
+          value: ''
         }
         item.label = g.nombre;
         item.value = g.nombre;
 
         gen1[i] = (item);
       });
-      setGen(...gen,gen1);
+      setGen(...gen, gen1);
     });
   }, []);
 
@@ -53,6 +53,8 @@ const CreateReservaScreen = (props) => {
       alert('Please provide the name of the client')
     } else if (state.evento === '') {
       alert('Please provide the namer of the event')
+    } else if (parseInt(state.cantidadBoletas) <= 0) {
+      alert('Debe reservar al menos 1 boleta')
     } else if (state.cantidadBoletas === '') {
       alert('Please provide a value of the tickets')
     } else {
