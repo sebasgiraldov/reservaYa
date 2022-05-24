@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, Button, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, Text, ScrollView, Button } from 'react-native'
 import { Image } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Inicio = (props) => {
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <ScrollView>
@@ -42,6 +38,14 @@ const Inicio = (props) => {
           {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
           <Text >
             List of Apoiments
+          </Text>
+        </Icon.Button>
+      </View>
+      <View style={{padding: 5}}>
+        <Icon.Button name="fast-food" backgroundColor="#778899" onPress={() => props.navigation.navigate('CreateRestaurantScreen')}>
+          {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
+          <Text >
+            List of Restaurants
           </Text>
         </Icon.Button>
       </View>

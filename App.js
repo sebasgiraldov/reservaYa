@@ -1,23 +1,24 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator()
-import GenreList from './screens/GenreList'
-import CreateGenreScreen from './screens/CreateGenreScreen'
+import GenreList from './screens/Genre.screens/GenreList'
+import CreateGenreScreen from './screens/Genre.screens/CreateGenreScreen'
 import Inicio from './screens/InicioScreen';
-import GenreDetailScreen from './screens/GenreDetailScreen'
-import FoodDetailScreen from './screens/FoodDetailScreen'
-import CreateFoodScreen from './screens/CreateFoodScreeen';
-import FoodList from './screens/FoodList';
-import EventList from './screens/EventList';
-import ApoinmentList from './screens/ApoinmentList';
-import CreateEventScreen from './screens/CreateEventScreen';
-import EventDetailScreen from './screens/EventDetailScreen';
-import ApoinmentDetailScreen from './screens/ApoinmentDetailScreen';
-import CreateReservaScreen from './screens/CreateReservaScreen';
+import GenreDetailScreen from './screens/Genre.screens/GenreDetailScreen'
+import FoodDetailScreen from './screens/Food.screens/FoodDetailScreen'
+import CreateFoodScreen from './screens/Food.screens/CreateFoodScreeen';
+import FoodList from './screens/Food.screens/FoodList';
+import EventList from './screens/Event.screens/EventList';
+import ApoinmentList from './screens/Apoinment.screens/ApoinmentList';
+import CreateEventScreen from './screens/Event.screens/CreateEventScreen';
+import EventDetailScreen from './screens/Event.screens/EventDetailScreen';
+import ApoinmentDetailScreen from './screens/Apoinment.screens/ApoinmentDetailScreen';
+import CreateReservaScreen from './screens/Apoinment.screens/CreateReservaScreen';
 import QRScreen from './screens/QRScreen';
+import CreateRestaurantScreen from './screens/Restaurant.screens/CreateRestaurantScreen'
 
 function MyStack() {
   return (
@@ -78,6 +79,10 @@ function MyStack() {
       <Stack.Screen name="QRScreen"
         component={QRScreen}
         options={{ title: 'Codigo QR' }} />
+      
+      <Stack.Screen name="CreateRestaurantScreen"
+        component={CreateRestaurantScreen}
+        options={{ title: 'Create Restaurant' }} />
 
     </Stack.Navigator>
   )

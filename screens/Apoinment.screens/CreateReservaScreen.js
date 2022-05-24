@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Button, TextInput, ScrollView, StyleSheet } from 'react-native'
-import firebase from '../database/firebase'
+import firebase from '../../database/firebase'
 import RNPickerSelect from "react-native-picker-select"
 
 const CreateReservaScreen = (props) => {
@@ -16,21 +16,21 @@ const CreateReservaScreen = (props) => {
 
   useEffect(() => {
     firebase.db.collection("evento").onSnapshot((querySnapshot) => {
-      const eventos = [];
+      const evento = [];
 
       querySnapshot.docs.forEach((doc) => {
         const { nombre, valor } = doc.data();
-        eventos.push({
+        evento.push({
           clave: doc.id,
           nombre,
           valor,
         });
       });
 
-      setEventos(eventos)
+      setEventos(evento)
       const gen1 = []
 
-      eventos.forEach((g, i) => {
+      evento.forEach((g, i) => {
         let item = {
           label:'',
           value:''
@@ -73,6 +73,7 @@ const CreateReservaScreen = (props) => {
         <RNPickerSelect
           onValueChange={(value) => handleChangeText('evento', value)}
           items={gen}
+          pickerProps={{style:{overflow:'hidden'}}}
         />
       </View>
       <View style={styles.inputGroup} >

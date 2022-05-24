@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, Button } from 'react-native'
-import firebase from '../database/firebase'
+import { View, ScrollView, Button } from 'react-native'
+import firebase from '../../database/firebase'
 import { ListItem, Avatar } from 'react-native-elements'
 
 const FoodList = (props) => {
@@ -9,18 +9,18 @@ const FoodList = (props) => {
 
   useEffect(() => {
     firebase.db.collection("foods").onSnapshot((querySnapshot) => {
-      const foods = [];
+      const food = [];
 
       querySnapshot.docs.forEach((doc) => {
         const { name, identificador } = doc.data();
-        foods.push({
+        food.push({
           clave: doc.id,
           name,
           identificador,
         });
       });
 
-      setFoods(foods)
+      setFoods(food)
     });
   }, []);
 
