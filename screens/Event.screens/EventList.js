@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, Button } from 'react-native'
-import firebase from '../database/firebase'
+import { View, ScrollView, Button } from 'react-native'
+import firebase from '../../database/firebase'
 import { ListItem, Avatar } from 'react-native-elements'
 
 const EventList = (props) => {
@@ -9,11 +9,11 @@ const EventList = (props) => {
 
   useEffect(() => {
     firebase.db.collection("evento").onSnapshot((querySnapshot) => {
-      const events = [];
+      const event = [];
 
       querySnapshot.docs.forEach((doc) => {
         const { cantidad_de_entradas, direccion, genero, nombre, organizador, valor } = doc.data();
-        events.push({
+        event.push({
           clave: doc.id,
           cantidad_de_entradas,
           direccion,
@@ -24,7 +24,7 @@ const EventList = (props) => {
         });
       });
 
-      setEvents(events)
+      setEvents(event)
     });
   }, []);
 

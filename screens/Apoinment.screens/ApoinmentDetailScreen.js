@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TextInput, ScrollView, Button, Alert } from 'react-native'
-import { ActivityIndicator } from 'react-native';
-import firebase from '../database/firebase'
+import { View, StyleSheet, TextInput, ScrollView, Button, Alert, ActivityIndicator } from 'react-native'
+import firebase from '../../database/firebase'
 import QRCode from "react-qr-code";
 
 const ApoinmentDetailScreen = (props) => {
@@ -19,9 +18,9 @@ const ApoinmentDetailScreen = (props) => {
     const getApoitmentByClave = async (clave) => {
         const dbRef = firebase.db.collection("reservas").doc(clave);
         const doc = await dbRef.get();
-        const apoinment = doc.data();
+        const apoinments = doc.data();
         setApoinment({
-            ...apoinment,
+            ...apoinments,
             clave: doc.clave,
         });
         setLoading(false);

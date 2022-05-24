@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TextInput, ScrollView, Button, Alert } from 'react-native'
-import { ActivityIndicator } from 'react-native';
-import firebase from '../database/firebase'
+import { View, StyleSheet, TextInput, ScrollView, Button, Alert, ActivityIndicator } from 'react-native'
+import firebase from '../../database/firebase'
 
 const EventDetailScreen = (props) => {
   const initialState = {
@@ -19,9 +18,9 @@ const EventDetailScreen = (props) => {
   const getEventByClave = async (clave) => {
     const dbRef = firebase.db.collection("evento").doc(clave);
     const doc = await dbRef.get();
-    const event = doc.data();
+    const events = doc.data();
     setEvents({
-      ...event,
+      ...events,
       clave: doc.clave,
     });
     setLoading(false);

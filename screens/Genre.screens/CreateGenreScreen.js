@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {View, Button, TextInput, ScrollView, StyleSheet} from 'react-native'
-import firebase from '../database/firebase'
+import firebase from '../../database/firebase'
 
 const CreateGenreScreen = (props) => {
 

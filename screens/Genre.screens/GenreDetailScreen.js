@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TextInput, ScrollView, Button, Alert } from 'react-native'
-import { ActivityIndicator } from 'react-native';
-import firebase from '../database/firebase'
+import { View, StyleSheet, TextInput, ScrollView, Button, Alert, ActivityIndicator } from 'react-native'
+import firebase from '../../database/firebase'
 
 const GenreDetailScreen = (props) => {
   const initialState = {
@@ -15,12 +14,12 @@ const GenreDetailScreen = (props) => {
   const getGenreByClave = async (clave) => {
     const dbRef = firebase.db.collection("genres").doc(clave);
     const doc = await dbRef.get();
-    const genre = doc.data();
+    const genres = doc.data();
     setGenre({
-      ...genre,
+      ...genres,
       clave: doc.clave,
     });
-    console.log(genre);
+    console.log(genres);
     setLoading(false);
   };
 

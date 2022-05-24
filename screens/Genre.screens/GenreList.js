@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, Button } from 'react-native'
-import firebase from '../database/firebase'
+import { View, ScrollView, Button } from 'react-native'
+import firebase from '../../database/firebase'
 import { ListItem, Avatar } from 'react-native-elements'
 
 const GenreList = (props) => {
@@ -9,18 +9,18 @@ const GenreList = (props) => {
 
   useEffect(() => {
     firebase.db.collection("genres").onSnapshot((querySnapshot) => {
-      const genres = [];
+      const genre = [];
 
       querySnapshot.docs.forEach((doc) => {
         const { name, id } = doc.data();
-        genres.push({
+        genre.push({
           clave: doc.id,
           name,
           id,
         });
       });
 
-      setGenres(genres)
+      setGenres(genre)
     });
   }, []);
 

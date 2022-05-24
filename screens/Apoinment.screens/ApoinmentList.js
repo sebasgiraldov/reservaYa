@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, Button } from 'react-native'
-import firebase from '../database/firebase'
+import { View, ScrollView, Button } from 'react-native'
+import firebase from '../../database/firebase'
 import { ListItem, Avatar } from 'react-native-elements'
 
 const ApoinmentList = (props) => {
@@ -9,18 +9,18 @@ const ApoinmentList = (props) => {
 
   useEffect(() => {
     firebase.db.collection("reservas").onSnapshot((querySnapshot) => {
-      const apoinments = [];
+      const apoinment = [];
 
       querySnapshot.docs.forEach((doc) => {
         const { nombreCliente, evento, cantidadBoletas  } = doc.data();
-        apoinments.push({
+        apoinment.push({
           clave: doc.id,
           nombreCliente,
           evento,
           cantidadBoletas,
         });
       });
-      setApoinments(apoinments)
+      setApoinments(apoinment)
     });
   }, []);
 

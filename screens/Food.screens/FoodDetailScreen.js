@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TextInput, ScrollView, Button, Alert } from 'react-native'
-import { ActivityIndicator } from 'react-native';
-import firebase from '../database/firebase'
+import { View, StyleSheet, TextInput, ScrollView, Button, Alert, ActivityIndicator } from 'react-native'
+import firebase from '../../database/firebase'
 
 const FoodDetailScreen = (props) => {
   const initialState = {
@@ -15,9 +14,9 @@ const FoodDetailScreen = (props) => {
   const getFoodByClave = async (clave) => {
     const dbRef = firebase.db.collection("foods").doc(clave);
     const doc = await dbRef.get();
-    const food = doc.data();
+    const foods = doc.data();
     setFoods({
-      ...food,
+      ...foods,
       clave: doc.clave,
     });
     setLoading(false);
