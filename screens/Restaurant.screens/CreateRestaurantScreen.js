@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
+import { ScrollView, View, StyleSheet, TextInput, Button, Text } from "react-native";
 import firebase from "../../database/firebase";
 import RNPickerSelect from "react-native-picker-select"
 
 /**
  * Ventana para crear un nuevo Restaurante
  */
-const CreateRestaurantScreen = () => {
+const CreateRestaurantScreen = (props) => {
 
   const [state, setState] = useState({
     nombre: '',
     direccion: '',
     aforo: '',
-    tipo_comida: '',
-    valor_por_persona: ''
+    tipoComida: '',
+    valorPorPersona: ''
   })
-
   const [foods, setFoods] = useState([]);
 
   /**
@@ -59,17 +58,64 @@ const CreateRestaurantScreen = () => {
     setState({ ...state, [name]: value })
   };
 
+  /**
+   * Metodo para guardar y validar los campos
+   */
+  const saveNewRestaurant = async () => {
+    if (state.nombre === '') {
+      alert('Please provide the name of the restaurant')
+    } else if (state.direccion === '') {
+      alert('Please provide the address of the restaurant')
+    } else if (parseInt(state.valorPorPersona) < 0) {
+      alert('El valor debe ser mayor o igual a $0')
+    } else if (parseInt(state.aforo) <= 0) {
+      alert('El aforo debe ser mayor a 0')
+    } else {
+      await firebase.db.collection('restaurantes').add({
+        nombre: state.nombre,
+        direccion: state.direccion,
+        valorPorPersona: state.valorPorPersona,
+        tipoComida: state.tipoComida,
+        aforo: state.aforo,
+      })
+      props.navigation.navigate('RestaurantList');
+    }
+  };
+
+
   return (
     <ScrollView style={styles.container}>
+      <View style={styles.inputGroup} >
+        <Text>Nombre del restaurante</Text>
+        <TextInput placeholder="Digite el nombre"
+          onChangeText={(value) => handleChangeText('nombre', value)} />
+      </View>
+      <View style={styles.inputGroup} >
+        <Text>Dirección del restaurante</Text>
+        <TextInput placeholder="Digite la direccion"
+          onChangeText={(value) => handleChangeText('direccion', value)} />
+      </View>
       <View style={styles.inputGroup}>
+        <Text>Seleccione el tipo de comida</Text>
         <RNPickerSelect
-          onValueChange={(value) => handleChangeText('tipo_comida', value)}
+          onValueChange={(value) => handleChangeText('tipoComida', value)}
           items={foods}
           pickerProps={{ style: { overflow: 'hidden' } }}
         />
-
       </View>
-    </ScrollView>
+      <View style={styles.inputGroup} >
+        <Text>Aforo del restaurante</Text>
+        <TextInput placeholder="Digite el aforo"
+          onChangeText={(value) => handleChangeText('aforo', value)} />
+      </View>
+      <View style={styles.inputGroup} >
+        <Text>Valor de la reserva por persona</Text>
+        <TextInput placeholder="Digite el valor"
+          onChangeText={(value) => handleChangeText('valorPorPersona', value)} />
+      </View>
+      <Button title="Save restaurant"
+        onPress={() => saveNewRestaurant()}></Button>
+    </ScrollView >
   )
 
 }

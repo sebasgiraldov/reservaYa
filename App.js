@@ -19,6 +19,7 @@ import ApoinmentDetailScreen from './screens/Apoinment.screens/ApoinmentDetailSc
 import CreateReservaScreen from './screens/Apoinment.screens/CreateReservaScreen';
 import QRScreen from './screens/QRScreen';
 import CreateRestaurantScreen from './screens/Restaurant.screens/CreateRestaurantScreen'
+import RestaurantList from './screens/Restaurant.screens/RestaurantList'
 
 function MyStack() {
   return (
@@ -79,7 +80,11 @@ function MyStack() {
       <Stack.Screen name="QRScreen"
         component={QRScreen}
         options={{ title: 'Codigo QR' }} />
-      
+
+      <Stack.Screen name="RestaurantList"
+        component={RestaurantList}
+        options={{ title: 'Restaurant List' }} />
+
       <Stack.Screen name="CreateRestaurantScreen"
         component={CreateRestaurantScreen}
         options={{ title: 'Create Restaurant' }} />
