@@ -18,8 +18,9 @@ import EventDetailScreen from './screens/Event.screens/EventDetailScreen';
 import ApoinmentDetailScreen from './screens/Apoinment.screens/ApoinmentDetailScreen';
 import CreateReservaScreen from './screens/Apoinment.screens/CreateReservaScreen';
 import QRScreen from './screens/QRScreen';
-import CreateRestaurantScreen from './screens/Restaurant.screens/CreateRestaurantScreen'
-import RestaurantList from './screens/Restaurant.screens/RestaurantList'
+import CreateRestaurantScreen from './screens/Restaurant.screens/CreateRestaurantScreen';
+import RestaurantList from './screens/Restaurant.screens/RestaurantList';
+import RestaurantDetailScreen from './screens/Restaurant.screens/RestaurantDetailScreen';
 
 function MyStack() {
   return (
@@ -88,6 +89,10 @@ function MyStack() {
       <Stack.Screen name="CreateRestaurantScreen"
         component={CreateRestaurantScreen}
         options={{ title: 'Create Restaurant' }} />
+
+      <Stack.Screen name="RestaurantDetailScreen"
+        component={RestaurantDetailScreen}
+        options={{ title: 'Detail Restaurant' }} />
 
     </Stack.Navigator>
   )
