@@ -33,7 +33,40 @@ const RestaurantDetailScreen = (props) => {
     setRestaurants({ ...restaurant, [name]: value })
   };
 
-  
+  /**
+   * Método para eliminar un restaurante de la colección
+   */
+  const deleteRestaurant = async () => {
+    const dbRef = firebase.db.collection('restaurantes').doc(props.route.params.restaurantClave);
+    await dbRef.delete();
+    props.navigation.navigate('RestaurantList')
+  }
+
+  /**
+   * Método para actualizar un restaurante con los nuevos datos ingresados
+   */
+  const updateRestaurant = async () => {
+    const dbRef = firebase.db.collection('restaurantes').doc(props.route.params.restaurantClave);
+    await dbRef.set({
+      nombre: restaurant.nombre,
+      direccion: restaurant.direccion,
+      aforo: restaurant.aforo,
+      tipoComida: restaurant.tipoComida,
+      valorPorPersona: restaurant.valorPorPersona,
+    })
+    setRestaurants(initialState)
+    props.navigation.navigate('RestaurantList')
+  }
+
+  /**
+   * Método para confirmar la eliminación de un restaurante
+   */
+  const openConfirmationAlert = () => {
+    Alert.alert('Remove the restaurant', 'Are you sure?', [
+      { text: 'Yes', onPress: () => deleteRestaurant() },
+      { text: 'No', onPress: () => console.log('Canceled') },
+    ])
+  }
 
   if (loading) {
     return (
@@ -57,20 +90,27 @@ const RestaurantDetailScreen = (props) => {
       </View>
       <View style={styles.inputGroup}>
         <TextInput placeholder="Capacity"
-          value={restaurant.genero}
+          value={restaurant.aforo}
           onChangeText={(value) => handleChangeText('aforo', value)} />
       </View>
       <View style={styles.inputGroup} >
         <TextInput placeholder="Food Type"
-          value={restaurant.nombre}
+          value={restaurant.tipoComida}
           onChangeText={(value) => handleChangeText('tipoComida', value)} />
       </View>
       <View style={styles.inputGroup}>
         <TextInput placeholder="cost person"
-          value={restaurant.organizador}
+          value={restaurant.valorPorPersona}
           onChangeText={(value) => handleChangeText('valorPorPersona', value)} />
       </View>
-      
+      <View style={styles.inputGroup}>
+        <Button color="#19AC52" title="Update restaurant"
+          onPress={() => updateRestaurant()}></Button>
+      </View>
+      <View>
+        <Button color="red" title="Delete restaurant"
+          onPress={() => openConfirmationAlert()}></Button>
+      </View>
     </ScrollView>
   )
 }
