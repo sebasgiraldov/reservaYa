@@ -49,6 +49,14 @@ const Inicio = (props) => {
           </Text>
         </Icon.Button>
       </View>
+      <View style={{padding: 5}}>
+        <Icon.Button name="person" backgroundColor="#891833" onPress={() => props.navigation.navigate('LoginSocioScreen')}>
+          {/* <Text style={{ fontFamily: 'Arial', fontSize: 15 }}> */}
+          <Text >
+            Partner Login
+          </Text>
+        </Icon.Button>
+      </View>
     </ScrollView>
   );
 };
