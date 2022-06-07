@@ -21,6 +21,8 @@ import QRScreen from './screens/QRScreen';
 import CreateRestaurantScreen from './screens/Restaurant.screens/CreateRestaurantScreen';
 import RestaurantList from './screens/Restaurant.screens/RestaurantList';
 import RestaurantDetailScreen from './screens/Restaurant.screens/RestaurantDetailScreen';
+import LoginSocioScreen from './screens/Login.screens/LoginSocioScreen';
+
 
 function MyStack() {
   return (
@@ -93,6 +95,9 @@ function MyStack() {
       <Stack.Screen name="RestaurantDetailScreen"
         component={RestaurantDetailScreen}
         options={{ title: 'Detail Restaurant' }} />
+      <Stack.Screen name="LoginSocioScreen"
+        component={LoginSocioScreen}
+        options={{ title: 'Partner Login' }} />
 
     </Stack.Navigator>
   )
