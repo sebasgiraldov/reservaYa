@@ -92,7 +92,7 @@ const CreateRestaurantScreen = (props) => {
       </View>
       <View style={styles.inputGroup} >
         <Text>Dirección del restaurante</Text>
-        <TextInput placeholder="Digite la direccion"
+        <TextInput placeholder="Digite la dirección"
           onChangeText={(value) => handleChangeText('direccion', value)} />
       </View>
       <View style={styles.inputGroup}>

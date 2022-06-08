@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TextInput, ScrollView, Button, Alert, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, TextInput, ScrollView, Button, Text, Alert, ActivityIndicator } from 'react-native'
 import firebase from '../../database/firebase'
 
 const RestaurantDetailScreen = (props) => {
@@ -7,10 +7,10 @@ const RestaurantDetailScreen = (props) => {
     clave: "",
     nombre: "",
     direccion: "",
-    aforo:"",
-    tipoComida:"",
-    valorPorPersona:"",
-}
+    aforo: "",
+    tipoComida: "",
+    valorPorPersona: "",
+  }
   const [restaurant, setRestaurants] = useState(initialState);
   const [loading, setLoading] = useState(true);
 
@@ -79,27 +79,32 @@ const RestaurantDetailScreen = (props) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Name"
+        <Text>Nombre</Text>
+        <TextInput placeholder="Nombre"
           value={restaurant.nombre}
           onChangeText={(value) => handleChangeText('nombre', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Address"
+        <Text>Dirección</Text>
+        <TextInput placeholder="Dirección"
           value={restaurant.direccion}
           onChangeText={(value) => handleChangeText('direccion', value)} />
       </View>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Capacity"
+        <Text>Aforo</Text>
+        <TextInput placeholder="Aforo"
           value={restaurant.aforo}
           onChangeText={(value) => handleChangeText('aforo', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Food Type"
+        <Text>Tipo de comida</Text>
+        <TextInput placeholder="Tipo de comida"
           value={restaurant.tipoComida}
           onChangeText={(value) => handleChangeText('tipoComida', value)} />
       </View>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="cost person"
+        <Text>Valor por persona</Text>
+        <TextInput placeholder="Valor por persona"
           value={restaurant.valorPorPersona}
           onChangeText={(value) => handleChangeText('valorPorPersona', value)} />
       </View>
@@ -122,7 +127,7 @@ const styles = StyleSheet.create({
   },
   inputGroup: {
     flex: 1,
-    padding: 0,
+    padding: 3,
     marginBottom: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#cccccc'

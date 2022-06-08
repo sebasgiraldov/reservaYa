@@ -112,8 +112,6 @@ const CreateEventScreen = (props) => {
           onChangeText={(value) => handleChangeText('organizador', value)} />
       </View>
       <View style={styles.inputGroup} >
-
-
         <TextInput placeholder="Value"
           onChangeText={(value) => handleChangeText('valor', value)} />
       </View>
