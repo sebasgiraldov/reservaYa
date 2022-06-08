@@ -12,6 +12,7 @@ import FoodDetailScreen from './screens/Food.screens/FoodDetailScreen'
 import CreateFoodScreen from './screens/Food.screens/CreateFoodScreen';
 import FoodList from './screens/Food.screens/FoodList';
 import EventList from './screens/Event.screens/EventList';
+import EventListUsuario from './screens/Event.screens/EventListUsuario';
 import ApoinmentList from './screens/Apoinment.screens/ApoinmentList';
 import CreateEventScreen from './screens/Event.screens/CreateEventScreen';
 import EventDetailScreen from './screens/Event.screens/EventDetailScreen';
@@ -20,6 +21,7 @@ import CreateReservaScreen from './screens/Apoinment.screens/CreateReservaScreen
 import QRScreen from './screens/QRScreen';
 import CreateRestaurantScreen from './screens/Restaurant.screens/CreateRestaurantScreen';
 import RestaurantList from './screens/Restaurant.screens/RestaurantList';
+import RestaurantListUsuario from './screens/Restaurant.screens/RestaurantListUsuario';
 import RestaurantDetailScreen from './screens/Restaurant.screens/RestaurantDetailScreen';
 import LoginSocioScreen from './screens/Login.screens/LoginSocioScreen';
 import PrincipalSocioScreen from './screens/Partner/PrincipalSocioScreen';
@@ -65,6 +67,10 @@ function MyStack() {
         component={EventList}
         options={{ title: 'Event List' }} />
 
+      <Stack.Screen name="EventListUsuario"
+        component={EventListUsuario}
+        options={{ title: 'Event List' }} />
+
       <Stack.Screen name="ApoinmentList"
         component={ApoinmentList}
         options={{ title: 'Apoinment List' }} />
@@ -91,6 +97,10 @@ function MyStack() {
 
       <Stack.Screen name="RestaurantList"
         component={RestaurantList}
+        options={{ title: 'Restaurant List' }} />
+
+      <Stack.Screen name="RestaurantListUsuario"
+        component={RestaurantListUsuario}
         options={{ title: 'Restaurant List' }} />
 
       <Stack.Screen name="CreateRestaurantScreen"

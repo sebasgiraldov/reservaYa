@@ -9,11 +9,11 @@ const PrincipalScreen = (props) => {
         <ScrollView style={styles.container}>
             <View style={styles.inputGroup}>
                 <Button title="Mostrar eventos"
-                    onPress={() => props.navigation.navigate('EventList')}></Button>
+                    onPress={() => props.navigation.navigate('EventListUsuario')}></Button>
             </View>
             <View style={styles.inputGroup}>
                 <Button title="Mostrar restaurantes"
-                    onPress={() => props.navigation.navigate('RestaurantList')}></Button>
+                    onPress={() => props.navigation.navigate('RestaurantListUsuario')}></Button>
             </View>
             <View style={styles.inputGroup}>
                 <Button title="Ingresar como socio"
