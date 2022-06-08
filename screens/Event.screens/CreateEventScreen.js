@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Button, TextInput, ScrollView, StyleSheet } from 'react-native'
+import { View, Button, Text, TextInput, ScrollView, StyleSheet } from 'react-native'
 import firebase from '../../database/firebase'
 import RNPickerSelect from "react-native-picker-select"
 
@@ -81,14 +81,17 @@ const CreateEventScreen = (props) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Number of tickets"
+        <Text>Cantidad de entradas</Text>
+        <TextInput placeholder="Digite la cantidad de entradas"
           onChangeText={(value) => handleChangeText('cantidad_de_entradas', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Address"
+        <Text>Dirección</Text>
+        <TextInput placeholder="Digite la dirección"
           onChangeText={(value) => handleChangeText('direccion', value)} />
       </View>
       <View style={styles.inputGroup}>
+        <Text>Seleccione el género</Text>
         <RNPickerSelect
                  onValueChange={(value) => handleChangeText('genero', value)}
                 //  items={[
@@ -104,15 +107,18 @@ const CreateEventScreen = (props) => {
              />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Name"
+        <Text>Nombre</Text>
+        <TextInput placeholder="Digite el nombre"
           onChangeText={(value) => handleChangeText('nombre', value)} />
       </View>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Organizer"
+        <Text>Organizador</Text>
+        <TextInput placeholder="Digite el organizador"
           onChangeText={(value) => handleChangeText('organizador', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Value"
+        <Text>Valor</Text>
+        <TextInput placeholder="Digite el valor"
           onChangeText={(value) => handleChangeText('valor', value)} />
       </View>
       <View style={styles.inputGroup}>

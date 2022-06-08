@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TextInput, ScrollView, Button, Alert, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, TextInput, ScrollView, Button, Text, Alert, ActivityIndicator } from 'react-native'
 import firebase from '../../database/firebase'
 
 const EventDetailScreen = (props) => {
@@ -73,32 +73,38 @@ const EventDetailScreen = (props) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Number of tickets"
+        <Text>Cantidad de entradas</Text>
+        <TextInput placeholder="Cantidad de entradas"
           value={event.cantidad_de_entradas}
           onChangeText={(value) => handleChangeText('cantidad_de_entradas', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Address"
+        <Text>Dirección</Text>
+        <TextInput placeholder="Dirección"
           value={event.direccion}
           onChangeText={(value) => handleChangeText('direccion', value)} />
       </View>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Gender"
+        <Text>Género</Text>
+        <TextInput placeholder="Género"
           value={event.genero}
           onChangeText={(value) => handleChangeText('genero', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Name"
+        <Text>Nombre</Text>
+        <TextInput placeholder="Nombre"
           value={event.nombre}
           onChangeText={(value) => handleChangeText('nombre', value)} />
       </View>
       <View style={styles.inputGroup}>
-        <TextInput placeholder="Organizer"
+        <Text>Organizador</Text>
+        <TextInput placeholder="Organizador"
           value={event.organizador}
           onChangeText={(value) => handleChangeText('organizador', value)} />
       </View>
       <View style={styles.inputGroup} >
-        <TextInput placeholder="Value"
+        <Text>Valor</Text>
+        <TextInput placeholder="Valor"
           value={event.valor}
           onChangeText={(value) => handleChangeText('valor', value)} />
       </View>
@@ -121,7 +127,7 @@ const styles = StyleSheet.create({
   },
   inputGroup: {
     flex: 1,
-    padding: 0,
+    padding: 3,
     marginBottom: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#cccccc'
