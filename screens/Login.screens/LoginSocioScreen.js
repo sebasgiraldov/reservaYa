@@ -72,7 +72,7 @@ const LoginSocioScreen = (props) => {
       alert('Please provide a password')
     } else if(activo) {
       activo = false;
-      props.navigation.navigate('Inicio');
+      props.navigation.navigate('PrincipalSocioScreen');
     } else {
         alert('Credenciales incorrectas')
     }
