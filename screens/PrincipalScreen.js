@@ -2,18 +2,22 @@ import React, { useState } from 'react'
 import { View, Button, TextInput, ScrollView, StyleSheet, Text } from 'react-native'
 
 /**
- * Ventana principal cuando se inicia sesión como socio
+ * Ventana principal
  */
-const PrincipalSocioScreen = (props) => {
+const PrincipalScreen = (props) => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.inputGroup}>
-                <Button title="Crear evento"
+                <Button title="Mostrar eventos"
                     onPress={() => props.navigation.navigate('EventList')}></Button>
             </View>
             <View style={styles.inputGroup}>
-                <Button title="Crear restaurante"
+                <Button title="Mostrar restaurantes"
                     onPress={() => props.navigation.navigate('RestaurantList')}></Button>
+            </View>
+            <View style={styles.inputGroup}>
+                <Button title="Ingresar como socio"
+                    onPress={() => props.navigation.navigate('LoginSocioScreen')}></Button>
             </View>
         </ScrollView>
     )
@@ -34,4 +38,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default PrincipalSocioScreen
+export default PrincipalScreen

@@ -23,10 +23,15 @@ import RestaurantList from './screens/Restaurant.screens/RestaurantList';
 import RestaurantDetailScreen from './screens/Restaurant.screens/RestaurantDetailScreen';
 import LoginSocioScreen from './screens/Login.screens/LoginSocioScreen';
 import PrincipalSocioScreen from './screens/Partner/PrincipalSocioScreen';
+import PrincipalScreen from './screens/PrincipalScreen';
 
 function MyStack() {
   return (
     <Stack.Navigator>
+
+      <Stack.Screen name="PrincipalScreen"
+        component={PrincipalScreen}
+        options={{ title: 'Inicio' }} />
 
       <Stack.Screen name="Inicio"
         component={Inicio}
