@@ -22,7 +22,7 @@ import CreateRestaurantScreen from './screens/Restaurant.screens/CreateRestauran
 import RestaurantList from './screens/Restaurant.screens/RestaurantList';
 import RestaurantDetailScreen from './screens/Restaurant.screens/RestaurantDetailScreen';
 import LoginSocioScreen from './screens/Login.screens/LoginSocioScreen';
-
+import PrincipalSocioScreen from './screens/Partner/PrincipalSocioScreen';
 
 function MyStack() {
   return (
@@ -95,9 +95,14 @@ function MyStack() {
       <Stack.Screen name="RestaurantDetailScreen"
         component={RestaurantDetailScreen}
         options={{ title: 'Detail Restaurant' }} />
+      
       <Stack.Screen name="LoginSocioScreen"
         component={LoginSocioScreen}
         options={{ title: 'Partner Login' }} />
+
+      <Stack.Screen name="PrincipalSocioScreen"
+        component={PrincipalSocioScreen}
+        options={{ title: 'Partner' }} />
 
     </Stack.Navigator>
   )

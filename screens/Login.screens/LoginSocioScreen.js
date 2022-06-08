@@ -32,10 +32,8 @@ const LoginSocioScreen = (props) => {
     } else if (state.password === '') {
       alert('Please provide a password')
     } else {
-      props.navigation.navigate('Inicio');
+      props.navigation.navigate('PrincipalSocioScreen');
     }
-
-
   };
 
   return (
