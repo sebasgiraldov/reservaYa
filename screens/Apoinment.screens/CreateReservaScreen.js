@@ -11,26 +11,24 @@ const CreateReservaScreen = (props) => {
     cantidadBoletas: '',
   });
 
-  const [eventos, setEventos] = useState([]);
   const [gen, setGen] = useState([]);
 
   useEffect(() => {
     firebase.db.collection("evento").onSnapshot((querySnapshot) => {
-      const evento = [];
+      const eventos = [];
 
       querySnapshot.docs.forEach((doc) => {
         const { nombre, valor } = doc.data();
-        evento.push({
+        eventos.push({
           clave: doc.id,
           nombre,
           valor,
         });
       });
 
-      setEventos(evento)
       const gen1 = []
 
-      evento.forEach((g, i) => {
+      eventos.forEach((g, i) => {
         let item = {
           label: '',
           value: ''

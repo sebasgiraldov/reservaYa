@@ -12,37 +12,36 @@ const CreateEventScreen = (props) => {
     nombre: '',
     organizador: '',
     valor: ''
-  })
-  const [genres, setGenres] = useState([]);
+  });
+
   const [gen, setGen] = useState([]);
 
   useEffect(() => {
     firebase.db.collection("genres").onSnapshot((querySnapshot) => {
-      const genre = [];
+      const genres = [];
 
       querySnapshot.docs.forEach((doc) => {
         const { name, id } = doc.data();
-        genre.push({
+        genres.push({
           clave: doc.id,
           name,
           id,
         });
       });
-      setGenres(genre);
-      
+
       const gen1 = []
 
-      genre.forEach((g, i) => {
+      genres.forEach((g, i) => {
         let item = {
-          label:'',
-          value:''
+          label: '',
+          value: ''
         }
         item.label = g.name;
         item.value = g.name;
 
         gen1[i] = (item);
       });
-      setGen(...gen,gen1);
+      setGen(...gen, gen1);
 
     });
   }, []);
@@ -90,18 +89,10 @@ const CreateEventScreen = (props) => {
       </View>
       <View style={styles.inputGroup}>
         <RNPickerSelect
-                 onValueChange={(value) => handleChangeText('genero', value)}
-                //  items={[
-                //      { label: "Regueton", value: "Regueton" },
-                //      { label: "Vallenato", value: "Vallenato" },
-                //      { label: "Salsa", value: "Salsa" },
-                //      { label: "Rock", value: "Rock" },
-                //      { label: "Metal", value: "Metal" },
-                //      { label: "Crossover", value: "CCrossover" },
-                //  ]}
-                items = {gen}
-                pickerProps={{style:{overflow:'hidden'}}}
-             />
+          onValueChange={(value) => handleChangeText('genero', value)}
+          items={gen}
+          pickerProps={{ style: { overflow: 'hidden' } }}
+        />
       </View>
       <View style={styles.inputGroup} >
         <TextInput placeholder="Name"

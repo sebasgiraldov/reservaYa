@@ -9,7 +9,7 @@ import CreateGenreScreen from './screens/Genre.screens/CreateGenreScreen'
 import Inicio from './screens/InicioScreen';
 import GenreDetailScreen from './screens/Genre.screens/GenreDetailScreen'
 import FoodDetailScreen from './screens/Food.screens/FoodDetailScreen'
-import CreateFoodScreen from './screens/Food.screens/CreateFoodScreeen';
+import CreateFoodScreen from './screens/Food.screens/CreateFoodScreen';
 import FoodList from './screens/Food.screens/FoodList';
 import EventList from './screens/Event.screens/EventList';
 import ApoinmentList from './screens/Apoinment.screens/ApoinmentList';
