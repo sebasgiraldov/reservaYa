@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Button, TextInput, ScrollView, StyleSheet, Text } from 'react-native'
 import firebase from '../../database/firebase'
 
@@ -13,6 +13,40 @@ const LoginSocioScreen = (props) => {
     password: ''
   })
 
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() => {
+    firebase.db.collection("socio").onSnapshot((querySnapshot) => {
+      const socio = [];
+
+      querySnapshot.docs.forEach((doc) => {
+        const { email, password } = doc.data();
+        socio.push({
+          clave: doc.id,
+          email,
+          password,
+        });
+      });
+      setUsuarios(socio);
+    });
+  }, []);
+
+  /**
+   * Metodo para validar las credenciales del socio
+   * para iniciar sesion
+   */
+  const validarCredenciales = () => {
+    var activo = false;
+    usuarios.forEach((user) => {
+      if (user.email === state.email) {
+        if (user.password === state.password) {
+          activo = true;
+        }
+      }
+    });
+    return activo;
+  }
+
   /**
    * Metodo para asignar los valores correspondientes al login
    * @param {*} name 
@@ -24,18 +58,24 @@ const LoginSocioScreen = (props) => {
 
 
   /**
-   * Se realiza la consulta a la base de datos para verificar si el email y contraseña coinciden.
+   * Se realiza verifica que los campos email y password no esten vacios
+   * y se llama al metodo que valida las credenciales.
    */
   const iniciarSesion = async () => {
+    var activo = validarCredenciales();
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (state.email === '') {
       alert('Please provide a email')
+    } else if (reg.test(state.email) === false) {
+      alert("Email is Not Correct");
     } else if (state.password === '') {
       alert('Please provide a password')
-    } else {
+    } else if(activo) {
+      activo = false;
       props.navigation.navigate('Inicio');
+    } else {
+        alert('Credenciales incorrectas')
     }
-
-
   };
 
   return (
