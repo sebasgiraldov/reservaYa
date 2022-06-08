@@ -1,0 +1,41 @@
+import React, { useState } from 'react'
+import { View, Button, TextInput, ScrollView, StyleSheet, Text } from 'react-native'
+
+/**
+ * Ventana principal
+ */
+const PrincipalScreen = (props) => {
+    return (
+        <ScrollView style={styles.container}>
+            <View style={styles.inputGroup}>
+                <Button title="Mostrar eventos"
+                    onPress={() => props.navigation.navigate('EventList')}></Button>
+            </View>
+            <View style={styles.inputGroup}>
+                <Button title="Mostrar restaurantes"
+                    onPress={() => props.navigation.navigate('RestaurantList')}></Button>
+            </View>
+            <View style={styles.inputGroup}>
+                <Button title="Ingresar como socio"
+                    onPress={() => props.navigation.navigate('LoginSocioScreen')}></Button>
+            </View>
+        </ScrollView>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 35
+    },
+
+    inputGroup: {
+        flex: 1,
+        padding: 0,
+        marginBottom: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#cccccc'
+    }
+})
+
+export default PrincipalScreen
