@@ -26,6 +26,8 @@ import RestaurantDetailScreen from './screens/Restaurant.screens/RestaurantDetai
 import LoginSocioScreen from './screens/Login.screens/LoginSocioScreen';
 import PrincipalSocioScreen from './screens/Partner/PrincipalSocioScreen';
 import PrincipalScreen from './screens/PrincipalScreen';
+import Pruebas from './pruebas/pruebas';
+
 
 function MyStack() {
   return (
@@ -118,6 +120,10 @@ function MyStack() {
       <Stack.Screen name="PrincipalSocioScreen"
         component={PrincipalSocioScreen}
         options={{ title: 'Partner' }} />
+
+      <Stack.Screen name="Pruebas"
+        component={Pruebas}
+        options={{ title: 'Pruebas' }} />
 
     </Stack.Navigator>
   )
