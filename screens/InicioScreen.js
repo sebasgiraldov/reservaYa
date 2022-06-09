@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Button } from 'react-native'
 import { Image } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const Inicio = (props) => {
+const InicioScreen = (props) => {
 
   return (
     <ScrollView>
@@ -63,4 +63,4 @@ const Inicio = (props) => {
 
 
 
-export default Inicio
+export default InicioScreen

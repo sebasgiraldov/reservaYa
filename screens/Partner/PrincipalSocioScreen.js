@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View, Button, TextInput, ScrollView, StyleSheet, Text } from 'react-native'
+import React from 'react'
+import { View, Button, ScrollView, StyleSheet } from 'react-native'
 
 /**
  * Ventana principal cuando se inicia sesión como socio

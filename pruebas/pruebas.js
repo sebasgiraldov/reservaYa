@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Button, TextInput, ScrollView, Text } from 'react-native'
+import { View, Button, ScrollView, Text } from 'react-native'
 import firebase from '../database/firebase'
 
 
