@@ -19,6 +19,10 @@ const PrincipalScreen = (props) => {
                 <Button title="Ingresar como socio"
                     onPress={() => props.navigation.navigate('LoginSocioScreen')}></Button>
             </View>
+            <View style={styles.inputGroup}>
+                <Button title="pruebas"
+                    onPress={() => props.navigation.navigate('Pruebas')}></Button>
+            </View>
         </ScrollView>
     )
 }
