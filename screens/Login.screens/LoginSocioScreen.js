@@ -71,7 +71,6 @@ const LoginSocioScreen = (props) => {
     } else if (state.password === '') {
       alert('Please provide a password')
     } else if(activo) {
-      activo = false;
       props.navigation.navigate('PrincipalSocioScreen');
     } else {
         alert('Credenciales incorrectas')

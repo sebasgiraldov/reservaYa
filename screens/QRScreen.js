@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Button } from 'react-native';
+import React from 'react';
+import { View, ScrollView, Button } from 'react-native';
 import QRCode from "react-qr-code";
 
 const QRScreen = (props) => {
