@@ -26,7 +26,7 @@ import RestaurantDetailScreen from './screens/Restaurant.screens/RestaurantDetai
 import LoginSocioScreen from './screens/Login.screens/LoginSocioScreen';
 import PrincipalSocioScreen from './screens/Partner/PrincipalSocioScreen';
 import PrincipalScreen from './screens/PrincipalScreen';
-import Pruebas from './pruebas/pruebas';
+import Pruebas from './pruebas/Pruebas';
 
 
 function MyStack() {

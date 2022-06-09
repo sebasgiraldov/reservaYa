@@ -24,7 +24,10 @@ const Pruebas = (props) => {
                     direccion,
                 });
             });
+            console.log("==============================================");
+            console.log("Prueba 1");
             console.log("Lista de todos los restaurantes: ", restaurante);
+            console.log("  ");
         });
 
         /**
@@ -42,7 +45,10 @@ const Pruebas = (props) => {
                     direccion,
                 });
             });
+            console.log("==============================================");
+            console.log("Prueba 2");
             console.log("Datos de una coleccion que no existe: [] = ",restaurant);
+            console.log("  ");
         });
 
         /**
@@ -62,7 +68,10 @@ const Pruebas = (props) => {
                     });
                 }
             });
+            console.log("==============================================");
+            console.log("Prueba 3");
             console.log("[{nombre: Gran china, direccion: Av santander, clave: 1rpbdr0GJvp7CWoDn0df}] = ",restarantePorId);
+            console.log("  ");
         });
 
         /**
@@ -82,7 +91,10 @@ const Pruebas = (props) => {
                     });
                 }
             });
+            console.log("==============================================");
+            console.log("Prueba 4");
             console.log("Restaurante no existente: [] = ",restaranteNoExiste);
+            console.log("  ");
         });
 
     }, []);
