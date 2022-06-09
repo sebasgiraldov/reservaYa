@@ -7,6 +7,10 @@ import { View, Button, TextInput, ScrollView, StyleSheet, Text } from 'react-nat
 const PrincipalSocioScreen = (props) => {
     return (
         <ScrollView style={styles.container}>
+            <View style={styles.buttonLog}>
+                <Button title="Sign out" color="#f194ff"
+                    onPress={() => props.navigation.navigate('PrincipalScreen')}></Button>
+            </View>
             <View style={styles.inputGroup}>
                 <Button title="Crear evento"
                     onPress={() => props.navigation.navigate('EventList')}></Button>
@@ -31,6 +35,13 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc'
+    },
+    buttonLog: {
+        flex: 1,
+        padding: 0,
+        marginBottom: 50,
+        flexDirection: 'row',
+        alignSelf: "flex-end",
     }
 })
 
